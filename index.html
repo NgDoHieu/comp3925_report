@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather, Region, and Visitors: A Multi-Dimensional Analysis of Hong Kong Visitor Trends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="jump-menu">
+    <div class="jump-container">
+      <span class="jump-label">JUMP TO</span>
+      <a href="#overview">Overview</a>
+      <a href="#trend">Yearly Trend</a>
+      <a href="#visitors">Visitor Trends</a>
+      <a href="#transport">Transport Modes</a>
+      <a href="#seasonal">Visitor&ndash;Temperature Trend</a>
+      <a href="#expenditure">Expenditure</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+      <h1>Weather, Region, and Visitors: A Multi-Dimensional Analysis of Hong Kong Visitor Trends</h1>
+      <p class="section-intro">
+        How do visitors travel to Hong Kong? This report examines visitor behavior, transport preferences, and spending patterns across source regions from 2012 to 2024.
+      </p>
+      <p class="section-description">
+        To keep the trend interpretation consistent, the analysis excludes 2020, 2021, and 2022, and focuses on comparable pre- and post-disruption years to reveal longer-term shifts in Hong Kong visitor dynamics.
+      </p>
+    </section>
+
+    <!-- Yearly Trend Section -->
+    <section id="trend" class="section section-lead">
+      <p class="eyebrow">Key Trend</p>
+      <h2>Yearly Transport Value by Mode</h2>
+      <p class="section-intro">
+        This trend highlights how total travel value changes over time across air, land, and sea transport.
+      </p>
+      <p class="section-description">
+        The chart shows air travel as the dominant mode throughout the period, with land and sea contributing smaller but important shares.
+      </p>
+      <div class="trend-panel">
+        <figure class="trend-chart">
+          <img class="trend-image" src="images/transport_trend.png" alt="Sum of Value by Year and Mode of transport" />
+          <figcaption>Figure 1. Sum of Value by Year and Mode of transport (air, land, sea).</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Dashboard Embed Section -->
+    <section id="visitors" class="section">
+      <h2>Visitor Trends & Regional Analysis</h2>
+      <p class="section-desc">Regional totals below reflect your provided data for 2012-2024 (excluding 2020-2022). Hover the map to view each region highlight.</p>
+      <div class="region-data-table-wrap">
+        <table class="region-data-table" aria-label="Total visitors by region">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Sum of Num of visitors</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Chinese Mainland</td><td>825,683,728</td></tr>
+            <tr><td>South and Southeast Asia (2)</td><td>69,392,794</td></tr>
+            <tr><td>North Asia (1)</td><td>44,523,842</td></tr>
+            <tr><td>Europe, Africa and the Middle East</td><td>40,207,126</td></tr>
+            <tr><td>Taiwan</td><td>36,924,856</td></tr>
+            <tr><td>The Americas</td><td>33,292,212</td></tr>
+            <tr><td>Macao/Not identified</td><td>20,937,240</td></tr>
+            <tr><td>Australia, New Zealand and South Pacific</td><td>13,067,916</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="region-explorer">
+        <div class="world-map-card">
+          <svg class="world-map" viewBox="0 0 920 430" role="img" aria-label="Interactive map of source regions">
+            <defs>
+              <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#eef8f3"></stop>
+                <stop offset="100%" stop-color="#dcefe7"></stop>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="920" height="430" class="map-ocean" fill="url(#oceanGrad)"></rect>
+
+            <path class="map-region" data-region="AME" tabindex="0" d="M95,120 L220,95 L250,140 L235,210 L190,275 L140,300 L100,270 L85,220 Z"></path>
+            <path class="map-region" data-region="EAFME" tabindex="0" d="M390,105 L470,95 L500,130 L470,160 L400,155 L370,130 Z"></path>
+            <path class="map-region" data-region="EAFME" tabindex="0" d="M390,170 L470,165 L505,225 L470,305 L410,325 L365,255 Z"></path>
+            <path class="map-region" data-region="SouASIA" tabindex="0" d="M505,165 L640,155 L680,205 L655,265 L560,280 L500,230 Z"></path>
+            <path class="map-region" data-region="NorASIA" tabindex="0" d="M520,95 L715,85 L765,145 L690,175 L550,165 L500,130 Z"></path>
+            <path class="map-region" data-region="NorASIA" tabindex="0" d="M710,150 L780,145 L815,190 L780,245 L730,250 L700,205 Z"></path>
+            <path class="map-region" data-region="AUS" tabindex="0" d="M700,295 L790,285 L835,335 L790,375 L715,365 L680,330 Z"></path>
+
+            <circle class="map-region map-point" data-region="CHI" tabindex="0" cx="738" cy="178" r="9"></circle>
+            <circle class="map-region map-point" data-region="TAI" tabindex="0" cx="768" cy="205" r="7"></circle>
+            <circle class="map-region map-point" data-region="MAC" tabindex="0" cx="742" cy="198" r="6"></circle>
+          </svg>
+          <div class="map-tooltip" id="map-tooltip" aria-hidden="true"></div>
+        </div>
+        <aside class="region-info-card" aria-live="polite">
+          <p class="region-info-label">Region Spotlight</p>
+          <h3 id="region-name">Hover a region</h3>
+          <p id="region-summary">Move your mouse over the map to view visitor highlights for each source region.</p>
+          <dl class="region-stats">
+            <div>
+              <dt>Total Visitors (2012-2024*)</dt>
+              <dd id="region-visitors">-</dd>
+            </div>
+            <div>
+              <dt>Transport Profile</dt>
+              <dd id="region-transport">-</dd>
+            </div>
+            <div>
+              <dt>Pattern</dt>
+              <dd id="region-pattern">-</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+      <div class="dashboard-card">
+        <div class="embed-wrapper">
+          <iframe
+            id="dashboard-frame"
+            title="Tourism Dashboard"
+            src="EMBED_URL_HERE"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transport Section -->
+    <section id="transport" class="section">
+      <h2>Transport Mode Distribution</h2>
+      <p class="section-desc">Compare the breakdown of travel by air, land, and sea across regions over time.</p>
+      <div class="trend-panel">
+        <figure class="trend-chart">
+          <img class="trend-image" src="images/value_by_region_and_transport.png" alt="Sum of value by region and mode of transport" />
+          <figcaption>Figure 2. Sum of value by region and mode of transport.</figcaption>
+        </figure>
+      </div>
+      <div class="insight-box">
+        <p><strong>Key Finding:</strong> Air travel dominates in most developed nations, while land transport remains prevalent in nearby destinations.</p>
+      </div>
+    </section>
+
+    <!-- Seasonality Section -->
+    <section id="seasonal" class="section">
+      <h2>Visitor&ndash;Temperature Trend</h2>
+      <p class="section-desc">Tourism peaks and valleys vary dramatically by region and climate. Some regions experience consistent travel year-round, while others show sharp seasonal spikes.</p>
+      <div class="temp-slideshow" aria-label="Visitor and temperature trends by region">
+        <figure class="temp-slide active">
+          <img src="images/temp_Vis_AFR.png" alt="Visitor and temperature trend for Africa" />
+          <figcaption>Africa</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_AME.png" alt="Visitor and temperature trend for The Americas" />
+          <figcaption>The Americas</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_AUS.png" alt="Visitor and temperature trend for Australia, New Zealand and South Pacific" />
+          <figcaption>Australia and South Pacific</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_CHI.png" alt="Visitor and temperature trend for Chinese Mainland" />
+          <figcaption>Chinese Mainland</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_EAST.png" alt="Visitor and temperature trend for East Asia" />
+          <figcaption>East Asia</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_EUR.png" alt="Visitor and temperature trend for Europe" />
+          <figcaption>Europe</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_MAC.png" alt="Visitor and temperature trend for Macao" />
+          <figcaption>Macao</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_NorASIA.png" alt="Visitor and temperature trend for North Asia" />
+          <figcaption>North Asia</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_SouASIA.png" alt="Visitor and temperature trend for South and Southeast Asia" />
+          <figcaption>South and Southeast Asia</figcaption>
+        </figure>
+        <figure class="temp-slide">
+          <img src="images/temp_Vis_TAI.png" alt="Visitor and temperature trend for Taiwan" />
+          <figcaption>Taiwan</figcaption>
+        </figure>
+        <div class="temp-controls" aria-label="Slideshow controls">
+          <button class="temp-btn" type="button" data-action="prev" aria-label="Previous chart">Prev</button>
+          <div class="temp-dots" aria-hidden="true"></div>
+          <button class="temp-btn" type="button" data-action="next" aria-label="Next chart">Next</button>
+        </div>
+      </div>
+      <div class="insight-box">
+        <p><strong>Observation:</strong> Northern destinations see summer surges, while tropical regions often peak during winter months.</p>
+      </div>
+    </section>
+
+    <!-- Expenditure Section -->
+    <section id="expenditure" class="section">
+      <h2>Travel Expenditure by Region</h2>
+      <p class="section-desc">Track total spending and average expenditure per visitor across different geographical markets.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <p class="footer-title">Weather, Region, and Visitors</p>
+      <div class="footer-links">
+        <a href="#overview">Home</a>
+      </div>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var regionMeta = {
+        AME: {
+          name: 'The Americas',
+          summary: 'Important long-haul source market for Hong Kong arrivals.',
+          visitors: '33,292,212',
+          transport: 'Mostly by air',
+          pattern: 'Mid-scale contribution'
+        },
+        EAFME: {
+          name: 'Europe, Africa and the Middle East',
+          summary: 'Combined long-haul markets grouped in the provided dataset.',
+          visitors: '40,207,126',
+          transport: 'Mostly by air',
+          pattern: 'Stable long-haul source mix'
+        },
+        SouASIA: {
+          name: 'South and Southeast Asia',
+          summary: 'Second-largest source block in your provided totals.',
+          visitors: '69,392,794',
+          transport: 'Air and short-haul links',
+          pattern: 'High and consistent contribution'
+        },
+        NorASIA: {
+          name: 'North Asia',
+          summary: 'Major nearby source region in the dataset.',
+          visitors: '44,523,842',
+          transport: 'Air dominant, some land/sea',
+          pattern: 'Strong regional travel demand'
+        },
+        AUS: {
+          name: 'Australia and South Pacific',
+          summary: 'Smaller but steady long-haul contributor.',
+          visitors: '13,067,916',
+          transport: 'Mostly by air',
+          pattern: 'Lower-volume stable inflow'
+        },
+        CHI: {
+          name: 'Chinese Mainland',
+          summary: 'Largest source market by a substantial margin.',
+          visitors: '825,683,728',
+          transport: 'Air, land, and sea',
+          pattern: 'Dominant total contribution'
+        },
+        TAI: {
+          name: 'Taiwan',
+          summary: 'Consistent nearby market in the source-region mix.',
+          visitors: '36,924,856',
+          transport: 'Mostly by air',
+          pattern: 'Steady medium-high contribution'
+        },
+        MAC: {
+          name: 'Macao/Not identified',
+          summary: 'Combined Macao and not-identified source entries from the table.',
+          visitors: '20,937,240',
+          transport: 'Land and sea significant',
+          pattern: 'Cross-boundary short-trip profile'
+        }
+      };
+
+      var map = document.querySelector('.world-map');
+      if (map) {
+        var mapCard = document.querySelector('.world-map-card');
+        var mapTooltip = document.getElementById('map-tooltip');
+        var regionName = document.getElementById('region-name');
+        var regionSummary = document.getElementById('region-summary');
+        var regionVisitors = document.getElementById('region-visitors');
+        var regionTransport = document.getElementById('region-transport');
+        var regionPattern = document.getElementById('region-pattern');
+        var regions = Array.prototype.slice.call(map.querySelectorAll('.map-region'));
+
+        function setRegion(code) {
+          var info = regionMeta[code];
+          if (!info) {
+            return;
+          }
+
+          regions.forEach(function (region) {
+            region.classList.toggle('is-active', region.getAttribute('data-region') === code);
+          });
+
+          regionName.textContent = info.name;
+          regionSummary.textContent = info.summary;
+          regionVisitors.textContent = info.visitors;
+          regionTransport.textContent = info.transport;
+          regionPattern.textContent = info.pattern;
+        }
+
+        function hideTooltip() {
+          if (!mapTooltip) {
+            return;
+          }
+          mapTooltip.classList.remove('is-visible');
+          mapTooltip.setAttribute('aria-hidden', 'true');
+        }
+
+        function showTooltip(event, code) {
+          if (!mapTooltip || !mapCard) {
+            return;
+          }
+          var info = regionMeta[code];
+          if (!info) {
+            return;
+          }
+
+          var rect = mapCard.getBoundingClientRect();
+          var offsetX = event && typeof event.clientX === 'number' ? event.clientX - rect.left : 24;
+          var offsetY = event && typeof event.clientY === 'number' ? event.clientY - rect.top : 24;
+
+          mapTooltip.innerHTML = '<strong>' + info.name + '</strong><span>Sum of Num of visitors: ' + info.visitors + '</span>';
+          mapTooltip.style.left = Math.min(Math.max(12, offsetX + 14), rect.width - 260) + 'px';
+          mapTooltip.style.top = Math.min(Math.max(12, offsetY + 14), rect.height - 76) + 'px';
+          mapTooltip.classList.add('is-visible');
+          mapTooltip.setAttribute('aria-hidden', 'false');
+        }
+
+        regions.forEach(function (region) {
+          var code = region.getAttribute('data-region');
+          region.addEventListener('mouseenter', function (event) {
+            setRegion(code);
+            showTooltip(event, code);
+          });
+          region.addEventListener('mousemove', function (event) {
+            showTooltip(event, code);
+          });
+          region.addEventListener('focus', function () {
+            setRegion(code);
+            showTooltip(null, code);
+          });
+          region.addEventListener('click', function (event) {
+            setRegion(code);
+            showTooltip(event, code);
+          });
+          region.addEventListener('mouseleave', function () {
+            hideTooltip();
+          });
+          region.addEventListener('blur', function () {
+            hideTooltip();
+          });
+        });
+
+        setRegion('CHI');
+      }
+
+      var slideshow = document.querySelector('.temp-slideshow');
+      if (slideshow) {
+        var slides = Array.prototype.slice.call(slideshow.querySelectorAll('.temp-slide'));
+        var dotsHost = slideshow.querySelector('.temp-dots');
+        var prevBtn = slideshow.querySelector('[data-action="prev"]');
+        var nextBtn = slideshow.querySelector('[data-action="next"]');
+        var index = 0;
+        var timer = null;
+        var intervalMs = 1500;
+
+        function renderDots() {
+          var html = '';
+          for (var i = 0; i < slides.length; i += 1) {
+            html += '<button class="temp-dot' + (i === index ? ' is-active' : '') + '" type="button" data-index="' + i + '" aria-label="Show chart ' + (i + 1) + '"></button>';
+          }
+          dotsHost.innerHTML = html;
+        }
+
+        function show(newIndex) {
+          index = (newIndex + slides.length) % slides.length;
+          slides.forEach(function (slide, i) {
+            slide.classList.toggle('active', i === index);
+          });
+          renderDots();
+        }
+
+        function next() {
+          show(index + 1);
+        }
+
+        function prev() {
+          show(index - 1);
+        }
+
+        function start() {
+          stop();
+          timer = window.setInterval(next, intervalMs);
+        }
+
+        function stop() {
+          if (timer) {
+            window.clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        dotsHost.addEventListener('click', function (event) {
+          var target = event.target;
+          if (!(target instanceof HTMLElement) || !target.classList.contains('temp-dot')) {
+            return;
+          }
+          var newIndex = Number(target.getAttribute('data-index'));
+          if (!Number.isNaN(newIndex)) {
+            show(newIndex);
+            start();
+          }
+        });
+
+        prevBtn.addEventListener('click', function () {
+          prev();
+          start();
+        });
+
+        nextBtn.addEventListener('click', function () {
+          next();
+          start();
+        });
+
+        slideshow.addEventListener('mouseenter', stop);
+        slideshow.addEventListener('mouseleave', start);
+
+        show(0);
+        start();
+      }
+    })();
+  </script>
+</body>
+</html>
