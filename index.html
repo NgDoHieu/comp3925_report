@@ -55,27 +55,7 @@
     <!-- Dashboard Embed Section -->
     <section id="visitors" class="section">
       <h2>Visitor Trends & Regional Analysis</h2>
-      <p class="section-desc">Regional totals below reflect your provided data for 2012-2024 (excluding 2020-2022). Hover the map to view each region highlight.</p>
-      <div class="region-data-table-wrap">
-        <table class="region-data-table" aria-label="Total visitors by region">
-          <thead>
-            <tr>
-              <th>Region</th>
-              <th>Sum of Num of visitors</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Chinese Mainland</td><td>825,683,728</td></tr>
-            <tr><td>South and Southeast Asia (2)</td><td>69,392,794</td></tr>
-            <tr><td>North Asia (1)</td><td>44,523,842</td></tr>
-            <tr><td>Europe, Africa and the Middle East</td><td>40,207,126</td></tr>
-            <tr><td>Taiwan</td><td>36,924,856</td></tr>
-            <tr><td>The Americas</td><td>33,292,212</td></tr>
-            <tr><td>Macao/Not identified</td><td>20,937,240</td></tr>
-            <tr><td>Australia, New Zealand and South Pacific</td><td>13,067,916</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="section-desc">Hover the map to view each region highlight and compare visitor patterns across source regions.</p>
       <div class="region-explorer">
         <div class="world-map-card">
           <svg class="world-map" viewBox="0 0 920 430" role="img" aria-label="Interactive map of source regions">
@@ -84,21 +64,52 @@
                 <stop offset="0%" stop-color="#eef8f3"></stop>
                 <stop offset="100%" stop-color="#dcefe7"></stop>
               </linearGradient>
+              <radialGradient id="glowGrad" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"></stop>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+              </radialGradient>
+              <filter id="mapShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#2d5848" flood-opacity="0.16"></feDropShadow>
+              </filter>
             </defs>
 
             <rect x="0" y="0" width="920" height="430" class="map-ocean" fill="url(#oceanGrad)"></rect>
 
-            <path class="map-region" data-region="AME" tabindex="0" d="M95,120 L220,95 L250,140 L235,210 L190,275 L140,300 L100,270 L85,220 Z"></path>
-            <path class="map-region" data-region="EAFME" tabindex="0" d="M390,105 L470,95 L500,130 L470,160 L400,155 L370,130 Z"></path>
-            <path class="map-region" data-region="EAFME" tabindex="0" d="M390,170 L470,165 L505,225 L470,305 L410,325 L365,255 Z"></path>
-            <path class="map-region" data-region="SouASIA" tabindex="0" d="M505,165 L640,155 L680,205 L655,265 L560,280 L500,230 Z"></path>
-            <path class="map-region" data-region="NorASIA" tabindex="0" d="M520,95 L715,85 L765,145 L690,175 L550,165 L500,130 Z"></path>
-            <path class="map-region" data-region="NorASIA" tabindex="0" d="M710,150 L780,145 L815,190 L780,245 L730,250 L700,205 Z"></path>
-            <path class="map-region" data-region="AUS" tabindex="0" d="M700,295 L790,285 L835,335 L790,375 L715,365 L680,330 Z"></path>
+            <circle cx="460" cy="215" r="180" fill="url(#glowGrad)" class="map-glow"></circle>
+
+            <g class="map-continents" aria-hidden="true">
+              <path d="M55 116 L72 101 L97 92 L128 88 L164 90 L193 99 L220 113 L240 131 L252 148 L250 165 L237 173 L221 164 L201 161 L186 170 L173 182 L153 188 L133 180 L115 169 L97 168 L81 160 L67 146 L58 131 Z"></path>
+              <path d="M250 61 L270 50 L293 52 L305 65 L297 78 L275 80 L257 72 Z"></path>
+              <path d="M194 202 L210 210 L223 224 L232 243 L235 262 L231 283 L225 301 L217 319 L206 333 L197 319 L191 300 L188 280 L183 261 L178 242 L181 224 Z"></path>
+              <path d="M409 93 L433 85 L461 84 L488 89 L510 100 L515 113 L506 121 L490 124 L472 122 L455 127 L438 123 L425 116 L414 108 Z"></path>
+              <path d="M428 127 L448 131 L470 140 L489 153 L503 172 L510 196 L508 222 L502 244 L493 266 L481 286 L465 299 L453 291 L446 270 L445 246 L439 226 L431 208 L425 188 L423 165 Z"></path>
+              <path d="M490 92 L531 85 L579 84 L628 88 L676 96 L722 107 L758 123 L788 142 L811 164 L823 186 L812 199 L783 206 L748 203 L715 210 L687 225 L658 232 L629 228 L606 215 L588 199 L570 187 L549 181 L529 170 L514 154 L503 137 L494 123 Z"></path>
+              <path d="M699 291 L725 283 L757 284 L789 295 L813 312 L818 333 L804 350 L779 360 L747 358 L717 350 L701 337 L694 319 Z"></path>
+              <path d="M828 375 L860 375 L870 384 L862 392 L836 392 L823 385 Z"></path>
+            </g>
+
+            <path class="map-region" data-region="AME" tabindex="0" filter="url(#mapShadow)" d="M95,120 L220,95 L250,140 L235,210 L190,275 L140,300 L100,270 L85,220 Z"></path>
+            <path class="map-region" data-region="EAFME" tabindex="0" filter="url(#mapShadow)" d="M390,105 L470,95 L500,130 L470,160 L400,155 L370,130 Z"></path>
+            <path class="map-region" data-region="EAFME" tabindex="0" filter="url(#mapShadow)" d="M390,170 L470,165 L505,225 L470,305 L410,325 L365,255 Z"></path>
+            <path class="map-region" data-region="SouASIA" tabindex="0" filter="url(#mapShadow)" d="M505,165 L640,155 L680,205 L655,265 L560,280 L500,230 Z"></path>
+            <path class="map-region" data-region="NorASIA" tabindex="0" filter="url(#mapShadow)" d="M520,95 L715,85 L765,145 L690,175 L550,165 L500,130 Z"></path>
+            <path class="map-region" data-region="NorASIA" tabindex="0" filter="url(#mapShadow)" d="M710,150 L780,145 L815,190 L780,245 L730,250 L700,205 Z"></path>
+            <path class="map-region" data-region="AUS" tabindex="0" filter="url(#mapShadow)" d="M700,295 L790,285 L835,335 L790,375 L715,365 L680,330 Z"></path>
 
             <circle class="map-region map-point" data-region="CHI" tabindex="0" cx="738" cy="178" r="9"></circle>
             <circle class="map-region map-point" data-region="TAI" tabindex="0" cx="768" cy="205" r="7"></circle>
             <circle class="map-region map-point" data-region="MAC" tabindex="0" cx="742" cy="198" r="6"></circle>
+
+            <g class="map-labels" aria-hidden="true">
+              <text x="92" y="76">North America</text>
+              <text x="188" y="356">South America</text>
+              <text x="430" y="76">Europe</text>
+              <text x="455" y="332">Africa</text>
+              <text x="618" y="79">Asia</text>
+              <text x="706" y="274">Australia</text>
+              <text x="742" y="164">China</text>
+              <text x="772" y="224">Taiwan</text>
+            </g>
           </svg>
           <div class="map-tooltip" id="map-tooltip" aria-hidden="true"></div>
         </div>
@@ -121,18 +132,6 @@
             </div>
           </dl>
         </aside>
-      </div>
-      <div class="dashboard-card">
-        <div class="embed-wrapper">
-          <iframe
-            id="dashboard-frame"
-            title="Tourism Dashboard"
-            src="EMBED_URL_HERE"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
       </div>
     </section>
 
@@ -221,151 +220,9 @@
       </div>
     </footer>
   </main>
+  <script src="javascripts/map.js"></script>
   <script>
     (function () {
-      var regionMeta = {
-        AME: {
-          name: 'The Americas',
-          summary: 'Important long-haul source market for Hong Kong arrivals.',
-          visitors: '33,292,212',
-          transport: 'Mostly by air',
-          pattern: 'Mid-scale contribution'
-        },
-        EAFME: {
-          name: 'Europe, Africa and the Middle East',
-          summary: 'Combined long-haul markets grouped in the provided dataset.',
-          visitors: '40,207,126',
-          transport: 'Mostly by air',
-          pattern: 'Stable long-haul source mix'
-        },
-        SouASIA: {
-          name: 'South and Southeast Asia',
-          summary: 'Second-largest source block in your provided totals.',
-          visitors: '69,392,794',
-          transport: 'Air and short-haul links',
-          pattern: 'High and consistent contribution'
-        },
-        NorASIA: {
-          name: 'North Asia',
-          summary: 'Major nearby source region in the dataset.',
-          visitors: '44,523,842',
-          transport: 'Air dominant, some land/sea',
-          pattern: 'Strong regional travel demand'
-        },
-        AUS: {
-          name: 'Australia and South Pacific',
-          summary: 'Smaller but steady long-haul contributor.',
-          visitors: '13,067,916',
-          transport: 'Mostly by air',
-          pattern: 'Lower-volume stable inflow'
-        },
-        CHI: {
-          name: 'Chinese Mainland',
-          summary: 'Largest source market by a substantial margin.',
-          visitors: '825,683,728',
-          transport: 'Air, land, and sea',
-          pattern: 'Dominant total contribution'
-        },
-        TAI: {
-          name: 'Taiwan',
-          summary: 'Consistent nearby market in the source-region mix.',
-          visitors: '36,924,856',
-          transport: 'Mostly by air',
-          pattern: 'Steady medium-high contribution'
-        },
-        MAC: {
-          name: 'Macao/Not identified',
-          summary: 'Combined Macao and not-identified source entries from the table.',
-          visitors: '20,937,240',
-          transport: 'Land and sea significant',
-          pattern: 'Cross-boundary short-trip profile'
-        }
-      };
-
-      var map = document.querySelector('.world-map');
-      if (map) {
-        var mapCard = document.querySelector('.world-map-card');
-        var mapTooltip = document.getElementById('map-tooltip');
-        var regionName = document.getElementById('region-name');
-        var regionSummary = document.getElementById('region-summary');
-        var regionVisitors = document.getElementById('region-visitors');
-        var regionTransport = document.getElementById('region-transport');
-        var regionPattern = document.getElementById('region-pattern');
-        var regions = Array.prototype.slice.call(map.querySelectorAll('.map-region'));
-
-        function setRegion(code) {
-          var info = regionMeta[code];
-          if (!info) {
-            return;
-          }
-
-          regions.forEach(function (region) {
-            region.classList.toggle('is-active', region.getAttribute('data-region') === code);
-          });
-
-          regionName.textContent = info.name;
-          regionSummary.textContent = info.summary;
-          regionVisitors.textContent = info.visitors;
-          regionTransport.textContent = info.transport;
-          regionPattern.textContent = info.pattern;
-        }
-
-        function hideTooltip() {
-          if (!mapTooltip) {
-            return;
-          }
-          mapTooltip.classList.remove('is-visible');
-          mapTooltip.setAttribute('aria-hidden', 'true');
-        }
-
-        function showTooltip(event, code) {
-          if (!mapTooltip || !mapCard) {
-            return;
-          }
-          var info = regionMeta[code];
-          if (!info) {
-            return;
-          }
-
-          var rect = mapCard.getBoundingClientRect();
-          var offsetX = event && typeof event.clientX === 'number' ? event.clientX - rect.left : 24;
-          var offsetY = event && typeof event.clientY === 'number' ? event.clientY - rect.top : 24;
-
-          mapTooltip.innerHTML = '<strong>' + info.name + '</strong><span>Sum of Num of visitors: ' + info.visitors + '</span>';
-          mapTooltip.style.left = Math.min(Math.max(12, offsetX + 14), rect.width - 260) + 'px';
-          mapTooltip.style.top = Math.min(Math.max(12, offsetY + 14), rect.height - 76) + 'px';
-          mapTooltip.classList.add('is-visible');
-          mapTooltip.setAttribute('aria-hidden', 'false');
-        }
-
-        regions.forEach(function (region) {
-          var code = region.getAttribute('data-region');
-          region.addEventListener('mouseenter', function (event) {
-            setRegion(code);
-            showTooltip(event, code);
-          });
-          region.addEventListener('mousemove', function (event) {
-            showTooltip(event, code);
-          });
-          region.addEventListener('focus', function () {
-            setRegion(code);
-            showTooltip(null, code);
-          });
-          region.addEventListener('click', function (event) {
-            setRegion(code);
-            showTooltip(event, code);
-          });
-          region.addEventListener('mouseleave', function () {
-            hideTooltip();
-          });
-          region.addEventListener('blur', function () {
-            hideTooltip();
-          });
-        });
-
-        setRegion('CHI');
-      }
-
       var slideshow = document.querySelector('.temp-slideshow');
       if (slideshow) {
         var slides = Array.prototype.slice.call(slideshow.querySelectorAll('.temp-slide'));
