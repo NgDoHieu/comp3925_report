@@ -283,25 +283,26 @@
           var newIndex = Number(target.getAttribute('data-index'));
           if (!Number.isNaN(newIndex)) {
             show(newIndex);
-            start();
+            // intentionally do not restart autoplay on user interaction
           }
         });
 
         prevBtn.addEventListener('click', function () {
           prev();
-          start();
+          // intentionally do not restart autoplay on user interaction
         });
 
         nextBtn.addEventListener('click', function () {
           next();
-          start();
+          // intentionally do not restart autoplay on user interaction
         });
 
-        slideshow.addEventListener('mouseenter', stop);
-        slideshow.addEventListener('mouseleave', start);
+        // Remove automatic mouseenter/mouseleave restart behavior so slideshow stays manual
+        // slideshow.addEventListener('mouseenter', stop);
+        // slideshow.addEventListener('mouseleave', start);
 
         show(0);
-        start();
+        // do not call start() here - slideshow will not auto-play
       }
     })();
   </script>
